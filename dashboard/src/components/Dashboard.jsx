@@ -61,14 +61,6 @@ export function Dashboard() {
                     <section className="flex-1 pt-3 md:p-6 lg:mb-0 lg:min-h-0 lg:min-w-0">
                         <List />
                     </section>
-                    <footer className="px-6 py-3 border-t flex w-full items-end">
-                        <p className="text-gray-600">Made by @codingsafari</p>
-                        <div className="flex-1"></div>
-                        <button
-                            className="shadow-md ml-auto border rounded-full ml-2 w-14 h-14 text-center leading-none text-green-200 bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                            <i className="fas fa-question fill-current"></i>
-                        </button>
-                    </footer>
                 </main>
             </section>
         </>

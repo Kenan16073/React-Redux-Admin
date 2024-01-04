@@ -21,11 +21,29 @@ export const productsApi = productApiCommon.injectEndpoints({
                 }
             },
             invalidatesTags: ['Products']
-        })
+        }),
+        productsGetOne: builder.query({
+            query: (id) => {
+                return {
+                    url: `products/${id}.json`,
+                    method : 'GET',
+                }
+            }
+        }),
+        productsEdit: builder.mutation({
+            query: (products_edit) => {
+                return {
+                    url: `products/${products_edit.id}.json`,
+                    method : 'PATCH',
+                    body : products_edit
+                }
+            },
+            invalidatesTags: ['Products']
+        }),
     })
 });
 
 
 
 
-export const { useProductsGetQuery,useProductsDeleteMutation } = productsApi;
+export const { useProductsGetQuery,useProductsDeleteMutation,useProductsGetOneQuery,useProductsEditMutation } = productsApi;
