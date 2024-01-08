@@ -11,7 +11,6 @@ export const productsApi = productApiCommon.injectEndpoints({
                     method: 'GET',
                 }
             },
-            invalidatesTags: ['Products']
         }),
         productsDelete: builder.mutation({
             query: (id) => {

@@ -12,7 +12,6 @@ export function List() {
   const [selectId, setSelectId] = useState('')
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch()
-  const [check,setCheck] = useState(false)
   const { viewProducts, loading } = useSelector((state) => state.productsSlice);
   const [editStatus, edit] = useProductsEditMutation()
 
@@ -28,13 +27,13 @@ export function List() {
   }
 
   async function changeStatus(e,id){
-    setCheck(e.target.checked)
+    let check = e.target.checked.toString();
     let resData = {}
     const res = await dispatch(testApi(id))
     for(let key in res.payload){
       resData[key] = res.payload[key]
     }
-    resData.status = check
+    resData.status = check;
     resData.id = id
     editStatus(resData)
   }
@@ -173,7 +172,7 @@ export function List() {
                 {item[1].brand}
               </td>
               <td className="px-6 py-4">
-                {item[1].status ? (<input onChange={(e)=>changeStatus(e,item[0])} id="chec" checked='checked' type="checkbox" />) : (<input onChange={(e)=>changeStatus(e,item[0])} id="chec" type="checkbox" />)}
+                {item[1].status === 'true' ? (<input onChange={(e)=>changeStatus(e,item[0])} id="chec" defaultChecked type="checkbox" />) : (<input onChange={(e)=>changeStatus(e,item[0])} id="chec" type="checkbox" />)}
               </td>
               <td className="flex justify-evenly py-4">
                 <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" onClick={() => openModal(item[0])}  >Views</button>
